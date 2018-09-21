@@ -1,9 +1,15 @@
-﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Consulta.aspx.cs" Inherits="Bases2.About" %>
+﻿<%@ Page Title="Consulta" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Consulta.aspx.cs" Inherits="Bases2.Consulta" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+
+    <asp:Label ID="LabelDatabase" runat="server" Text=""></asp:Label>
+
+    <br />
+    <br />
+
     <asp:Label ID="Label0" runat="server" Text="Ingrese su cédula: "></asp:Label>
 
-    <asp:TextBox ID="TextBoxCedula" runat="server"></asp:TextBox>
+    <asp:TextBox ID="TextBoxCedula" runat="server" style="width: 128px"></asp:TextBox>
 
     <asp:Button ID="ButtonCedula" runat="server" Text="OK" OnClick="ButtonCedula_Click" />
     <asp:Panel ID="PanelChange" runat="server" Visible="false">
@@ -46,7 +52,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Sexo: "></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList1" runat="server">
+                    <asp:DropDownList ID="DropDownListSexo" runat="server">
                         <asp:ListItem>Masculino</asp:ListItem>
                         <asp:ListItem>Femenino</asp:ListItem>
                     </asp:DropDownList>
@@ -54,10 +60,10 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label3" runat="server" Text="FechaCaducidad: "></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="Fecha de Caducidad: "></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBoxFechaCaducidad" runat="server"></asp:TextBox>
+                    <asp:Calendar ID="CalendarCaducacion" runat="server"></asp:Calendar>
                 </td>
             </tr>
             <tr>

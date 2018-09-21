@@ -10,7 +10,16 @@
 namespace Bases2 {
     
     
-    public partial class About {
+    public partial class Consulta {
+        
+        /// <summary>
+        /// Control LabelDatabase.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelDatabase;
         
         /// <summary>
         /// Control Label0.
@@ -112,13 +121,13 @@ namespace Bases2 {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Control DropDownList1.
+        /// Control DropDownListSexo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListSexo;
         
         /// <summary>
         /// Control Label3.
@@ -130,13 +139,13 @@ namespace Bases2 {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// Control TextBoxFechaCaducidad.
+        /// Control CalendarCaducacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxFechaCaducidad;
+        protected global::System.Web.UI.WebControls.Calendar CalendarCaducacion;
         
         /// <summary>
         /// Control Label4.
