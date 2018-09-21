@@ -1,6 +1,6 @@
 use Elecciones;
 go
-CREATE PROCEDURE verCantones @IDProvincia int
+CREATE PROCEDURE getCantones @IDProvincia int
 AS
 BEGIN
 	DECLARE @resultR int;

@@ -1,6 +1,6 @@
 use Elecciones;
 go
-CREATE PROCEDURE verDistritos @IDCanton int
+CREATE PROCEDURE getDistritos @IDCanton int
 AS
 BEGIN
 	DECLARE @resultR int;
