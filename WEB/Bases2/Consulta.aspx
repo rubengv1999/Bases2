@@ -16,32 +16,33 @@
         <table style="width:100%;">
             <tr>
                 <td>
-                    <asp:Label ID="Label1" runat="server" Text="Provincia: "></asp:Label>
+                    <asp:Label ID="Label10" runat="server" Text="Ubicación Actual: "></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBoxUbicacion" runat="server" Width="300px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label1" runat="server" Text="Cambiar Provincia: "></asp:Label>
                 </td>
                 <td>
                     <asp:DropDownList ID="DropDownListProvincia" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListProvincia_SelectedIndexChanged">
-                        <asp:ListItem Value="1">San José</asp:ListItem>
-                        <asp:ListItem Value="2">Alajuela</asp:ListItem>
-                        <asp:ListItem Value="3">Cartago</asp:ListItem>
-                        <asp:ListItem Value="4">Heredia</asp:ListItem>
-                        <asp:ListItem Value="5">Guanacaste</asp:ListItem>
-                        <asp:ListItem Value="6">Puntarenas</asp:ListItem>
-                        <asp:ListItem Value="7">Limón</asp:ListItem>
-                        <asp:ListItem Value="8">Consulado</asp:ListItem>
+                        
                     </asp:DropDownList>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label8" runat="server" Text="Cantón: "></asp:Label>
+                    <asp:Label ID="Label8" runat="server" Text="Cambiar Cantón: "></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownListCanton" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownListCanton" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListCanton_SelectedIndexChanged"></asp:DropDownList>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label9" runat="server" Text="Distrito: "></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text="Cambiar Distrito: "></asp:Label>
                 </td>
                 <td>
                     <asp:DropDownList ID="DropDownListDistrito" runat="server"></asp:DropDownList>
