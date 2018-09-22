@@ -32,7 +32,7 @@ public class WriteXMLFile {
 
     public static void main(String argv[]) throws IOException  {
         
-        txtToXml("C:\\Users\\ruben\\Downloads\\padron_completo\\PADRON_COMPLETO.txt");
+        txtToXml("C:\\Users\\ruben\\Downloads\\sj\\SJ.txt");
     }
 
 
@@ -52,7 +52,7 @@ public class WriteXMLFile {
                 
                 while ((readLine = b.readLine()) != null) {
                     i++;
-                    if (i % 100 == 0) {
+                    if (i % 10000 == 0) {
                         System.out.println(i);
                     }
 
@@ -70,17 +70,18 @@ public class WriteXMLFile {
                     attr = doc.createAttribute("FechaCaducidad");
                     attr.setValue(readLine.substring(19, 27));
                     staff.setAttributeNode(attr);
-                    attr = doc.createAttribute("Junta");
-                    attr.setValue(readLine.substring(28, 33));
-                    staff.setAttributeNode(attr);
+//                    attr = doc.createAttribute("Junta");
+//                    attr.setValue(readLine.substring(28, 33));
+//                    staff.setAttributeNode(attr);
                     attr = doc.createAttribute("Nombre");
-                    attr.setValue(readLine.substring(34, 64));
+                    attr.setValue(readLine.substring(34, 64).replace("  ",""));
                     staff.setAttributeNode(attr);
                     attr = doc.createAttribute("Apellido1");
-                    attr.setValue(readLine.substring(65, 91));
+                    attr.setValue(readLine.substring(65, 91).replace(" ",""));
+                    
                     staff.setAttributeNode(attr);
                     attr = doc.createAttribute("Apellido2");
-                    attr.setValue(readLine.substring(92));
+                    attr.setValue(readLine.substring(92).replace(" ",""));
                     staff.setAttributeNode(attr);
                 }
             } catch (IOException e) {
