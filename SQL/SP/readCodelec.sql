@@ -1,32 +1,18 @@
-use ProyectoBD2;
+use Elecciones;
 go
-CREATE PROCEDURE readCodelec @Codelec
+CREATE PROCEDURE readCodelec @Codelec varchar(50)
 AS
 BEGIN
-	DECLARE @resultR int;
-	BEGIN TRY
-		DECLARE @result Table (Provincia varchar(50), Distrito varchar(50), Canton varchar(50));
-		DECLARE @IDProvincia varchar(50) =  SUBSTRING (@Codelec,1,1);
-		DECLARE @IDCanton varchar(50) =  SUBSTRING (@Codelec,2,3);
-		DECLARE @IDDistrito varchar(50) =  SUBSTRING (@Codelec,4,3);
+	DECLARE @CodigoProvincia varchar(50) =  SUBSTRING (@Codelec,1,1);
+	DECLARE @CodigoCanton varchar(50) =  SUBSTRING (@Codelec,2,2);
+	DECLARE @CodigoDistrito varchar(50) =  SUBSTRING (@Codelec,4,3);
 
-		DECLARE @Provincia varchar(50) = SELECT Nombre FROM dbo.Provincia WHERE IDProvincia = @IDProvincia;
-		DECLARE @Canton varchar(50) = SELECT Nombre FROM dbo.Canton WHERE IDCanton = @IDCanton AND IDProvincia = @IDProvincia;
-		DECLARE @Distrito varchar(50) = SELECT Nombre FROM dbo.Distrito WHERE IDCanton = @IDCanton AND IDProvincia = @IDProvincia AND IDDistrito = @IDDistrito;
+	DECLARE @IDProvincia int, @IDCanton int, @IDDistrito int;
+	SELECT  @IDProvincia = IDProvincia FROM dbo.Provincia WHERE CodigoProvincia = @CodigoProvincia;
+	SELECT  @IDCanton = IDCanton FROM dbo.Canton WHERE IDProvincia = @IDProvincia AND CodigoCanton = @CodigoCanton;
+	SELECT  @IDDistrito = IDDistrito FROM dbo.Distrito WHERE IDCanton = @IDCanton AND CodigoDistrito = @CodigoDistrito;
 
+	return @IDDistrito
 
-
-
-		INSERT INTO @result SELECT @Provincia, @Canton, @Distrito 
-
-		SELECT * FROM @result;
-
-		SET @resultR = 0;
-		RETURN @resultR;
-	END TRY
-	BEGIN CATCH
-		SET @resultR = -1;
-		RETURN @resultR;
-	END CATCH
 END
 go
