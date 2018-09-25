@@ -1,15 +1,13 @@
 use Elecciones;
 
 GO
-CREATE PROCEDURE insertXML @PathXML varchar(50)
+CREATE PROCEDURE insertXMLPeople @XMLText varchar(MAX)
 AS 
 BEGIN
---'E:\Distelec.xml'
+DECLARE @XMLInput XML;
+SET @XMLInput = @XMLText
 DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
-
-SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
-
-FROM OPENROWSET(BULK 'C:\GU.xml', SINGLE_BLOB) AS x)
+SET @XML = (SELECT CONVERT(XML,@XMLInput))
 
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
 DECLARE @xmlTable Table (Apellido1 varchar(50),Apellido2 varchar(50), Cedula varchar(50), Codelec varchar(50), FechaCaducidad DateTime, Nombre varchar(50), Sexo int)

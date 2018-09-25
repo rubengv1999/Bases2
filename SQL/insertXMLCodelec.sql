@@ -1,15 +1,13 @@
 use Elecciones;
 
 GO
-CREATE PROCEDURE insertCodelec @PathXML varchar(50)
+CREATE PROCEDURE insertXMLCodelec @XMLText varchar(MAX)
 AS 
 BEGIN
---'E:\Distelec.xml'
+DECLARE @XMLInput XML;
+SET @XMLInput = @XMLText
 DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
-
-SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
-
-FROM OPENROWSET(BULK @PathXML, SINGLE_BLOB) AS x)
+SET @XML = (SELECT CONVERT(XML,@XMLInput))
 
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
 DECLARE @xmlTable Table (CodigoProvincia varchar(50), CodigoCanton varchar(50), CodigoDistrito varchar(50), Provincia varchar(50), Canton varchar(50), Distrito varchar(50))
@@ -59,12 +57,7 @@ DEALLOCATE cursorTabla
 
 
 
-
---INSERT INTO dbo.Estudiante SELECT name, lastName, email, carnet, phone, password FROM @xmlTable;
-
 EXEC sp_xml_removedocument @hDoc
 
-END
+END 
 GO
-
-
