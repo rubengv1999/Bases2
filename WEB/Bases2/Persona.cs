@@ -14,14 +14,11 @@ namespace Bases2
         public int Sexo;
         public DateTime FechaCaducacion;
         public String CodigoJunta;
-        public int IDProvincia;
         public String Provincia;
-        public int IDCanton;
         public String Canton;
-        public int IDDistrito;
         public String Distrito;
 
-        public Persona(string cedula, string nombre, string apellido1, string apellido2, int sexo, DateTime fechaCaducacion, string codigoJunta, int iDProvincia, string provincia, int iDCanton, string canton, int iDDistrito, string distrito)
+        public Persona(string cedula, string nombre, string apellido1, string apellido2, int sexo, DateTime fechaCaducacion, string codigoJunta, string provincia, string canton, string distrito)
         {
             Cedula = cedula;
             Nombre = nombre;
@@ -30,11 +27,8 @@ namespace Bases2
             Sexo = sexo;
             FechaCaducacion = fechaCaducacion;
             CodigoJunta = codigoJunta;
-            IDProvincia = iDProvincia;
             Provincia = provincia;
-            IDCanton = iDCanton;
             Canton = canton;
-            IDDistrito = iDDistrito;
             Distrito = distrito;
         }
     }

@@ -27,8 +27,7 @@
                     <asp:Label ID="Label1" runat="server" Text="Cambiar Provincia: "></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownListProvincia" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListProvincia_SelectedIndexChanged">
-                        
+                    <asp:DropDownList ID="DropDownListProvincia" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListProvincia_SelectedIndexChanged">                    
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -53,10 +52,10 @@
                     <asp:Label ID="Label2" runat="server" Text="Sexo: "></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownListSexo" runat="server">
+                    <asp:RadioButtonList ID="RadioButtonListSexo" runat="server" RepeatDirection="Horizontal">
                         <asp:ListItem>Masculino</asp:ListItem>
                         <asp:ListItem>Femenino</asp:ListItem>
-                    </asp:DropDownList>
+                    </asp:RadioButtonList>
                 </td>
             </tr>
             <tr>

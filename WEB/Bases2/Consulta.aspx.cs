@@ -21,12 +21,11 @@ namespace Bases2
             {
                 LabelDatabase.Text = "Usted está usando el motor de base de datos de Oracle";
             }
-
-
         }
 
         protected void ButtonCedula_Click(object sender, EventArgs e)
         {
+            persona = Procedures.getPerson(TextBoxCedula.Text);
             List<Tuple<int, string>> provincias = Procedures.getProvincias();
             DropDownListProvincia.Items.Clear();
             foreach ( Tuple<int, string> provincia in provincias)
@@ -43,16 +42,14 @@ namespace Bases2
             TextBoxSegundoApellido.Text = persona.Apellido2;
             if (persona.Sexo == 1)
             {
-                DropDownListSexo.SelectedIndex = 0;
+                RadioButtonListSexo.SelectedIndex= 0;
             }
             else
             {
-                DropDownListSexo.SelectedIndex = 1;
+                RadioButtonListSexo.SelectedIndex = 1;
             }
             CalendarCaducacion.SelectedDate = persona.FechaCaducacion.Date;
-            
             TextBoxJunta.Text = persona.CodigoJunta;
-            DropDownListProvincia.SelectedIndex = persona.IDProvincia-1;
         }
 
         protected void DropDownListProvincia_SelectedIndexChanged(object sender, EventArgs e)
