@@ -1,4 +1,4 @@
-use Elecciones;
+use Padron;
 go
 CREATE PROCEDURE getLocation @Cedula varchar (50)
 AS

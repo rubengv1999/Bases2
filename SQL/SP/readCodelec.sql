@@ -1,4 +1,4 @@
-use Elecciones;
+use Padron;
 go
 CREATE PROCEDURE readCodelec @Codelec varchar(50)
 AS

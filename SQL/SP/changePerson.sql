@@ -1,16 +1,17 @@
-use Elecciones;
+use Padron;
 go
 CREATE PROCEDURE changePerson @Cedula varchar(50),@Nombre varchar(50),@Apellido1 varchar(50),@Apellido2 varchar(50),@Sexo int,@FechaCaducacion DateTime,@CodigoJunta varchar(50),@IDDistrito int
 AS
 BEGIN
-	DECLARE @IDJunta int
+	DECLARE @IDJunta int;
+	SELECT @IDJunta = MAX(IDJunta) FROM dbo.junta
 	IF EXISTS (SELECT * FROM dbo.Junta WHERE Codigo = @CodigoJunta) 
     BEGIN
         SELECT @IDJunta = IDJunta FROM dbo.Junta WHERE Codigo = @CodigoJunta
     END
     ELSE
     BEGIN
-        INSERT INTO dbo.Junta VALUES (@CodigoJunta)
+        INSERT INTO dbo.Junta VALUES (@IDJunta+ 1, @CodigoJunta)
 		SELECT @IDJunta = IDJunta FROM dbo.Junta WHERE Codigo = @CodigoJunta
     END
 	Update dbo.Ciudadano

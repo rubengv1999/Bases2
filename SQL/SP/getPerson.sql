@@ -1,4 +1,4 @@
-use Elecciones;
+use Padron;
 go
 CREATE PROCEDURE getPerson @Cedula varchar(50)
 AS

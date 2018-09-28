@@ -1,13 +1,12 @@
-use Elecciones;
+use Padron;
 
 GO
-CREATE PROCEDURE insertXMLCodelec @XMLText varchar(MAX)
+CREATE PROCEDURE insertXMLCodelec 
 AS 
 BEGIN
-DECLARE @XMLInput XML;
-SET @XMLInput = @XMLText
 DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
-SET @XML = (SELECT CONVERT(XML,@XMLInput))
+SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
+FROM OPENROWSET(BULK 'C:\Users\ruben\Desktop\Provincias\Distelec.XML', SINGLE_BLOB) AS x)
 
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
 DECLARE @xmlTable Table (CodigoProvincia varchar(50), CodigoCanton varchar(50), CodigoDistrito varchar(50), Provincia varchar(50), Canton varchar(50), Distrito varchar(50))
@@ -31,25 +30,25 @@ WHILE(@@fetch_status=0)
 BEGIN
     DECLARE @IDProvincia int;
     DECLARE @IDCanton int;
-    IF EXISTS (SELECT * FROM dbo.Provincia WHERE CodigoProvincia = @CodigoProvincia) 
+	DECLARE @IDMAX int; 
+    IF NOT EXISTS (SELECT * FROM dbo.Provincia WHERE CodigoProvincia = @CodigoProvincia) 
     BEGIN
-        SELECT @IDProvincia = IDProvincia FROM dbo.Provincia WHERE CodigoProvincia = @CodigoProvincia
+		SELECT @IDMAX = COUNT(*) FROM dbo.Provincia
+        INSERT INTO dbo.Provincia VALUES (@IDMAX+1, @Provincia, @CodigoProvincia)
     END
-    ELSE
-    BEGIN
-        INSERT INTO dbo.Provincia VALUES ( @Provincia, @CodigoProvincia)
-		SELECT @IDProvincia = IDProvincia FROM dbo.Provincia WHERE CodigoProvincia = @CodigoProvincia
-    END
+	SELECT @IDProvincia = IDProvincia FROM dbo.Provincia WHERE CodigoProvincia = @CodigoProvincia
     IF EXISTS (SELECT * FROM dbo.Canton WHERE CodigoCanton = @CodigoCanton AND IDProvincia = @IDProvincia)
     BEGIN
         SELECT @IDcanton = IDCanton FROM dbo.Canton WHERE CodigoCanton = @CodigoCanton AND IDProvincia = @IDProvincia
     END
     ELSE
     BEGIN
-        INSERT INTO dbo.Canton VALUES ( @Canton,@IDProvincia, @CodigoCanton)
+		SELECT @IDMAX = COUNT(*) FROM dbo.Canton
+        INSERT INTO dbo.Canton VALUES (@IDMAX+1, @Canton,@IDProvincia, @CodigoCanton)
 		SELECT @IDcanton = IDCanton FROM dbo.Canton WHERE CodigoCanton = @CodigoCanton
     END
-    INSERT INTO dbo.Distrito VALUES (@Distrito, @IDCanton, @CodigoDistrito)
+	SELECT @IDMAX = COUNT(*) FROM dbo.Distrito
+    INSERT INTO dbo.Distrito VALUES (@IDMAX,@Distrito, @IDCanton, @CodigoDistrito,@CodigoProvincia+@CodigoCanton+@CodigoDistrito)
     FETCH cursorTabla INTO @CodigoProvincia, @CodigoCanton, @CodigoDistrito, @Provincia, @Canton, @Distrito
 END
 CLOSE cursorTabla

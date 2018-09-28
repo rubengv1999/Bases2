@@ -1,4 +1,4 @@
-use Elecciones;
+use Padron;
 go
 CREATE PROCEDURE getCantones @IDProvincia int
 AS

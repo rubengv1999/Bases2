@@ -9,7 +9,8 @@ namespace Bases2
 {
     public class Procedures
     {
-        public static String conect = "Data Source=ecRhin.ec.tec.ac.cr\\Estudiantes;Initial Catalog=Elecciones;User=anobando;Password=anobando";
+        public static String conect = "Data Source=DESKTOP-DEO1EC6\\SQLRUBEN;Initial Catalog=Padron;Integrated Security=True";
+        //public static String conect = "Data Source=ecRhin.ec.tec.ac.cr\\Estudiantes;Initial Catalog=Elecciones;User=anobando;Password=anobando";
         public static List<Tuple<int, string>> getProvincias()
         {
             SqlConnection con = new SqlConnection(conect);
