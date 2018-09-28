@@ -144,6 +144,7 @@ C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\Bases2\Bases2\obj
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\Bases2\Bases2\obj\Debug\Bases2.csproj.CopyComplete
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\Bases2\Bases2\obj\Debug\Bases2.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\Bases2\Bases2\obj\Debug\Bases2.pdb
+C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\Bases2.dll.config
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\Bases2.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\Bases2.pdb
@@ -156,7 +157,6 @@ C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\ro
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\Microsoft.CSharp.Core.targets
@@ -193,6 +193,8 @@ C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\ro
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\vbc.rsp
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\VBCSCompiler.exe
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\Bases2.dll.CodeAnalysisLog.xml
+C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\Bases2.dll.lastcodeanalysissucceeded
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\Antlr3.Runtime.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\AspNet.ScriptManager.jQuery.dll
@@ -212,7 +214,6 @@ C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\Mi
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\es\System.Web.Optimization.resources.dll
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
-C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\obj\Debug\Bases2.csprojAssemblyReference.cache
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\obj\Debug\Bases2.csproj.CoreCompileInputs.cache
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\obj\Debug\Bases2.csproj.CopyComplete
 C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\WEB\Bases2\obj\Debug\Bases2.dll

@@ -17,8 +17,9 @@ namespace Bases2
         public String Provincia;
         public String Canton;
         public String Distrito;
+        public int IDDistrito;
 
-        public Persona(string cedula, string nombre, string apellido1, string apellido2, int sexo, DateTime fechaCaducacion, string codigoJunta, string provincia, string canton, string distrito)
+        public Persona(string cedula, string nombre, string apellido1, string apellido2, int sexo, DateTime fechaCaducacion, string codigoJunta, string provincia, string canton, string distrito, int iDDistrito)
         {
             Cedula = cedula;
             Nombre = nombre;
@@ -30,6 +31,7 @@ namespace Bases2
             Provincia = provincia;
             Canton = canton;
             Distrito = distrito;
+            IDDistrito = iDDistrito;
         }
     }
 }

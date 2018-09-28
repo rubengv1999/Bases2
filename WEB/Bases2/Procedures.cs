@@ -9,9 +9,10 @@ namespace Bases2
 {
     public class Procedures
     {
+        public static String conect = "Data Source=ecRhin.ec.tec.ac.cr\\Estudiantes;Initial Catalog=Elecciones;User=anobando;Password=anobando";
         public static List<Tuple<int, string>> getProvincias()
         {
-            SqlConnection con = new SqlConnection("Data Source=ecRhin.ec.tec.ac.cr\\Estudiantes;Initial Catalog=Elecciones;User=anobando;Password=anobando");
+            SqlConnection con = new SqlConnection(conect);
             SqlCommand com = new SqlCommand("getProvincias", con);
             com.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter adapt = new SqlDataAdapter(com);
@@ -30,7 +31,7 @@ namespace Bases2
        
         public static List<Tuple<int, string>> getCantones(string IDProvincia)
         {
-            SqlConnection con = new SqlConnection("Data Source=ecRhin.ec.tec.ac.cr\\Estudiantes;Initial Catalog=Elecciones;User=anobando;Password=anobando");
+            SqlConnection con = new SqlConnection(conect);
             SqlCommand com = new SqlCommand("getCantones", con);
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.Add("@IDProvincia", SqlDbType.Int).Value = int.Parse(IDProvincia);
@@ -51,7 +52,7 @@ namespace Bases2
         }
         public static List<Tuple<int, string>> getDistritos(string IDCanton)
         {
-            SqlConnection con = new SqlConnection("Data Source=ecRhin.ec.tec.ac.cr\\Estudiantes;Initial Catalog=Elecciones;User=anobando;Password=anobando");
+            SqlConnection con = new SqlConnection(conect);
             SqlCommand com = new SqlCommand("getDistritos", con);
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.Add("@IDCanton", SqlDbType.Int).Value = int.Parse(IDCanton);
@@ -72,10 +73,10 @@ namespace Bases2
         }
         public static Persona getPerson(string Cedula)
         {
-            SqlConnection con = new SqlConnection("Data Source=ecRhin.ec.tec.ac.cr\\Estudiantes;Initial Catalog=Elecciones;User=anobando;Password=anobando");
+            SqlConnection con = new SqlConnection(conect);
             SqlCommand com = new SqlCommand("getPerson", con);
             com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.Add("@Cedula", SqlDbType.Int).Value = int.Parse(Cedula);
+            com.Parameters.Add("@Cedula", SqlDbType.VarChar).Value = Cedula;
             con.Open();
             com.ExecuteNonQuery();
             SqlDataAdapter adapt = new SqlDataAdapter(com);
@@ -93,10 +94,35 @@ namespace Bases2
                 string Provincia = row["Provincia"].ToString();
                 string Canton = row["Canton"].ToString();
                 string Distrito = row["Distrito"].ToString();
-                Persona persona = new Persona(Cedula, Nombre, Apellido1, Apellido2, Sexo, FechaCaducidad, CodigoJunta, Provincia, Canton, Distrito);
+                int IDDistrito = int.Parse(row["IDDistrito"].ToString());
+                Persona persona = new Persona(Cedula, Nombre, Apellido1, Apellido2, Sexo, FechaCaducidad, CodigoJunta, Provincia, Canton, Distrito, IDDistrito);
                 personas.Add(persona);
             }
-            return personas[0];
+            if (personas.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return personas[0];
+            }
+            
+        }
+        public static void changePerson(string Cedula, string Nombre, string Apellido1, string Apellido2, int Sexo, DateTime FechaCaducacion, string CodigoJunta, int IDDistrito)
+        {
+            SqlConnection con = new SqlConnection(conect);
+            SqlCommand com = new SqlCommand("changePerson", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.Add("@Cedula", SqlDbType.VarChar).Value = Cedula;
+            com.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+            com.Parameters.Add("@Apellido1", SqlDbType.VarChar).Value = Apellido1;
+            com.Parameters.Add("@Apellido2", SqlDbType.VarChar).Value = Apellido2;
+            com.Parameters.Add("@Sexo", SqlDbType.Int).Value = Sexo;
+            com.Parameters.Add("@FechaCaducacion", SqlDbType.DateTime).Value =  FechaCaducacion;
+            com.Parameters.Add("@CodigoJunta", SqlDbType.VarChar).Value = CodigoJunta;
+            com.Parameters.Add("@IDDistrito", SqlDbType.Int).Value = IDDistrito;
+            con.Open();
+            com.ExecuteNonQuery();
         }
     }
 }
