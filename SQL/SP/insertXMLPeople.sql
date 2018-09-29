@@ -47,26 +47,21 @@ FROM OPENROWSET(BULK 'C:\Users\ruben\Desktop\Provincias\CO.XML', SINGLE_BLOB) AS
 END
 
 
-
-
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
-DECLARE @xmlTable Table (Apellido1 varchar(50),Apellido2 varchar(50), Cedula varchar(50), Distelec varchar(50), FechaCaducidad DateTime, Nombre varchar(50), Sexo int)
-INSERT INTO @xmlTable SELECT Apellido1, Apellido2, Cedula, Distelec, FechaCaducidad, Nombre, Sexo
-FROM OPENXML(@hDoc, 'People/Person')
+INSERT INTO dbo.Ciudadano SELECT Cedula,Nombre, Apellido1, Apellido2, Sexo, FechaCaducidad, 1, (SELECT IDDistrito FROM dbo.Distrito as D WHERE D.Codelec = Distelec)
+FROM OPENXML(@hDoc, 'People/P')
 WITH 
 (
-Apellido1 [varchar](50) '@LastName1',
-Apellido2 [varchar](50) '@LastName2',
-Cedula [varchar](50) '@Doc',
-Distelec [varchar](50) '@Codelec',
-FechaCaducidad DateTime '@Date',
-Nombre [varchar](50) '@Name',
-Sexo int '@Sex'
+Apellido1 [varchar](50) '@LN1',
+Apellido2 [varchar](50) '@LN2',
+Cedula [varchar](50) '@C',
+Distelec [varchar](50) '@D',
+FechaCaducidad DateTime '@F',
+Nombre [varchar](50) '@N',
+Sexo int '@S'
 );
 
-INSERT INTO dbo.Ciudadano
-SELECT Cedula, Nombre, Apellido1, Apellido2, Sexo, FechaCaducidad, 1, (SELECT IDDistrito FROM dbo.Distrito as D WHERE D.Codelec = Distelec)
-FROM @xmlTable
+
 EXEC sp_xml_removedocument @hDoc
 
 END
