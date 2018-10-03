@@ -111,7 +111,7 @@
         </table>
         <br />
         <strong>
-        <asp:Button ID="ButtonChange" runat="server" OnClick="ButtonChange_Click" style="font-size: large; font-weight: bold; color: #FFFFFF; background-color: #000099" Text="Cambiar" />
+        <asp:Button ID="ButtonChange" runat="server" OnClick="ButtonChange_Click" style="font-size: large; font-weight: bold; color: #FFFFFF; background-color: #00498A" Text="Cambiar" />
         </strong>
     </asp:Panel>
 
