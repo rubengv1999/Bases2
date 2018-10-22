@@ -32,62 +32,70 @@ import org.w3c.dom.Element;
 public class WriteXMLFile {
 
     public static String txtToXml(String path, String ID) {
-        try {
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.newDocument();
-            Element rootElement = doc.createElement("People");
-            doc.appendChild(rootElement);
+        File af = new File(path + ".xml");
+        if (af.exists()) {
+            System.out.println("Listo");
+            return ID;
+        } else {
             try {
-                File f = new File(path + ".txt");
-                BufferedReader b = new BufferedReader(new InputStreamReader(new FileInputStream(f), "utf-8"));
-                int i = 0;
-                String readLine = "";
-                while ((readLine = b.readLine()) != null) {
-                    i++;
-                    if (i % 10000 == 0) {
-                        System.out.println(i);
-                    }
-                    Element staff = doc.createElement("Person");
-                    rootElement.appendChild(staff);
-                    Attr attr = doc.createAttribute("Doc");
-                    attr.setValue(readLine.substring(0, 9));
-                    staff.setAttributeNode(attr);
-                    attr = doc.createAttribute("Codelec");
-                    attr.setValue(readLine.substring(10, 16));
-                    staff.setAttributeNode(attr);
-                    attr = doc.createAttribute("Sex");
-                    attr.setValue(readLine.substring(17, 18));
-                    staff.setAttributeNode(attr);
-                    attr = doc.createAttribute("Date");
-                    attr.setValue(readLine.substring(19, 27));
-                    staff.setAttributeNode(attr);
+                DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+                Document doc = docBuilder.newDocument();
+                Element rootElement = doc.createElement("People");
+                doc.appendChild(rootElement);
+                try {
+                    File f = new File(path + ".txt");
+                    BufferedReader b = new BufferedReader(new InputStreamReader(new FileInputStream(f), "utf-8"));
+                    int i = 0;
+                    String readLine = "";
+                    while ((readLine = b.readLine()) != null) {
+                        i++;
+                        if (i % 10000 == 0) {
+                            System.out.println(i);
+                        }
+                        Element staff = doc.createElement("P");
+                        rootElement.appendChild(staff);
+                        Attr attr = doc.createAttribute("C");
+                        attr.setValue(readLine.substring(0, 9));
+                        staff.setAttributeNode(attr);
+                        attr = doc.createAttribute("D");
+                        attr.setValue(readLine.substring(10, 16));
+                        staff.setAttributeNode(attr);
+                        attr = doc.createAttribute("S");
+                        attr.setValue(readLine.substring(17, 18));
+                        staff.setAttributeNode(attr);
+                        attr = doc.createAttribute("F");
+                        attr.setValue(readLine.substring(19, 27));
+                        staff.setAttributeNode(attr);
 //                    attr = doc.createAttribute("Junta");
 //                    attr.setValue(readLine.substring(28, 33));
 //                    staff.setAttributeNode(attr);
-                    attr = doc.createAttribute("Name");
-                    attr.setValue(readLine.substring(34, 64).replace("  ", ""));
-                    staff.setAttributeNode(attr);
-                    attr = doc.createAttribute("LastName1");
-                    attr.setValue(readLine.substring(65, 91).replace(" ", ""));
-                    staff.setAttributeNode(attr);
-                    attr = doc.createAttribute("LastName2");
-                    attr.setValue(readLine.substring(92).replace(" ", ""));
-                    staff.setAttributeNode(attr);
+                        attr = doc.createAttribute("N");
+                        attr.setValue(readLine.substring(34, 64).replace("  ", ""));
+                        staff.setAttributeNode(attr);
+                        attr = doc.createAttribute("LN1");
+                        attr.setValue(readLine.substring(65, 91).replace(" ", ""));
+                        staff.setAttributeNode(attr);
+                        attr = doc.createAttribute("LN2");
+                        attr.setValue(readLine.substring(92).replace(" ", ""));
+                        staff.setAttributeNode(attr);
+                    }
+                } catch (IOException e) {
                 }
-            } catch (IOException e) {
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+                DOMSource source = new DOMSource(doc);
+                StreamResult result = new StreamResult(new File(path + ".xml"));
+                transformer.transform(source, result);
+
+                return ID;
+            } catch (ParserConfigurationException | TransformerException pce) {
             }
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(path + ".xml"));
-            transformer.transform(source, result);
-            System.out.println("Listo");
-            return ID;
-        } catch (ParserConfigurationException | TransformerException pce) {
+
         }
+
         return "-1";
     }
 

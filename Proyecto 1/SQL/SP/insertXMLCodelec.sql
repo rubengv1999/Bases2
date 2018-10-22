@@ -1,12 +1,13 @@
 use Padron;
 
 GO
-CREATE PROCEDURE insertXMLCodelec 
+CREATE PROCEDURE [dbo].[insertXMLPeople] @XMLText varchar(MAX)
 AS 
 BEGIN
+DECLARE @XMLInput XML;
+SET @XMLInput = @XMLText
 DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
-SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
-FROM OPENROWSET(BULK 'C:\Users\ruben\Desktop\Provincias\Distelec.XML', SINGLE_BLOB) AS x)
+SET @XML = (SELECT CONVERT(XML,@XMLInput))
 
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
 DECLARE @xmlTable Table (CodigoProvincia varchar(50), CodigoCanton varchar(50), CodigoDistrito varchar(50), Provincia varchar(50), Canton varchar(50), Distrito varchar(50))
@@ -30,25 +31,17 @@ WHILE(@@fetch_status=0)
 BEGIN
     DECLARE @IDProvincia int;
     DECLARE @IDCanton int;
-	DECLARE @IDMAX int; 
     IF NOT EXISTS (SELECT * FROM dbo.Provincia WHERE CodigoProvincia = @CodigoProvincia) 
     BEGIN
-		SELECT @IDMAX = COUNT(*) FROM dbo.Provincia
-        INSERT INTO dbo.Provincia VALUES (@IDMAX+1, @Provincia, @CodigoProvincia)
+        INSERT INTO dbo.Provincia VALUES (@Provincia, @CodigoProvincia)
     END
-	SELECT @IDProvincia = IDProvincia FROM dbo.Provincia WHERE CodigoProvincia = @CodigoProvincia
-    IF EXISTS (SELECT * FROM dbo.Canton WHERE CodigoCanton = @CodigoCanton AND IDProvincia = @IDProvincia)
+	SELECT @IDProvincia = Id FROM dbo.Provincia WHERE CodigoProvincia = @CodigoProvincia
+    IF NOT EXISTS (SELECT * FROM dbo.Canton WHERE CodigoCanton = @CodigoCanton AND Provincia_Id = @IDProvincia)
     BEGIN
-        SELECT @IDcanton = IDCanton FROM dbo.Canton WHERE CodigoCanton = @CodigoCanton AND IDProvincia = @IDProvincia
+        INSERT INTO dbo.Canton VALUES (@Canton,@IDProvincia, @CodigoCanton)
     END
-    ELSE
-    BEGIN
-		SELECT @IDMAX = COUNT(*) FROM dbo.Canton
-        INSERT INTO dbo.Canton VALUES (@IDMAX+1, @Canton,@IDProvincia, @CodigoCanton)
-		SELECT @IDcanton = IDCanton FROM dbo.Canton WHERE CodigoCanton = @CodigoCanton
-    END
-	SELECT @IDMAX = COUNT(*) FROM dbo.Distrito
-    INSERT INTO dbo.Distrito VALUES (@IDMAX,@Distrito, @IDCanton, @CodigoDistrito,@CodigoProvincia+@CodigoCanton+@CodigoDistrito)
+	SELECT @IDcanton = Id FROM dbo.Canton  WHERE CodigoCanton = @CodigoCanton AND Provincia_Id = @IDProvincia
+    INSERT INTO dbo.Distrito VALUES (@Distrito, @IDCanton, @CodigoDistrito)
     FETCH cursorTabla INTO @CodigoProvincia, @CodigoCanton, @CodigoDistrito, @Provincia, @Canton, @Distrito
 END
 CLOSE cursorTabla
@@ -59,4 +52,4 @@ DEALLOCATE cursorTabla
 EXEC sp_xml_removedocument @hDoc
 
 END 
-GO
+
