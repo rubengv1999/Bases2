@@ -1,0 +1,103 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>ProyectoMultidimensionalBases</Database>
+    <Server>localhost</Server>
+    <ConnectionString>Data Source=localhost;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>JHE4yqIzOCKlZpVCGUAuPOz03lU=30/10/2018 21:24:0330/10/2018 21:23:24</TimeStamp>
+        <ID>
+          <String>Plan</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>uF+83KCA2LNJwBvWt9WUDW7Gz0c=30/10/2018 20:30:5130/10/2018 21:23:24</TimeStamp>
+        <ID>
+          <String>Plan</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>5ZGV4y5RSl9UfRZpqOV6jgkD8F8=30/10/2018 20:45:2130/10/2018 21:23:24</TimeStamp>
+        <ID>
+          <String>Modelo</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>0BbEFVzcaW9kdJOtjrtVkTbkMqY=30/10/2018 20:45:3430/10/2018 21:23:24</TimeStamp>
+        <ID>
+          <String>Color</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>wwGh0Td8B5Ko90/hW+eHmJCAWD8=30/10/2018 20:45:4630/10/2018 21:23:24</TimeStamp>
+        <ID>
+          <String>Idioma</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>3RrwtQ2AwipaR+wQSBDDdK/QAKw=30/10/2018 20:46:0730/10/2018 21:23:24</TimeStamp>
+        <ID>
+          <String>Cliente</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>vUXTp6/7oqN46KSecWPvA4Y/id0=30/10/2018 20:35:5230/10/2018 21:23:24</TimeStamp>
+        <ID>
+          <String>Carro</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>rnaoloGJxU2BmT3lrkX8eMPcEjI=30/10/2018 20:46:2930/10/2018 21:23:24</TimeStamp>
+        <ID>
+          <String>Marca</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>Ettw6Eqmpnaqm3DEFgdyqCvdMoc=30/10/2018 20:46:3730/10/2018 21:23:24</TimeStamp>
+        <ID>
+          <String>Pais</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>qkfMhO6CYdwwqPm+zWKvmZYOrdI=30/10/2018 20:46:3730/10/2018 21:23:24fvizZ3T9Y7M82ZthIJPahEYNrCs=30/10/2018 20:35:5130/10/2018 21:23:24</TimeStamp>
+        <ID>
+          <String>Plan</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>2V1RpGiLQOWETgWGqUza/glSmTk=24/10/2018 10:42:0530/10/2018 21:23:24</TimeStamp>
+      <ID>
+        <String>ProyectoMultidimensionalBases</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2018-10-31T03:24:21.383333Z</LastDeployed>
+</DeploymentSnapshot>
