@@ -8,30 +8,31 @@ SET @XML = (SELECT CONVERT(XML, BulkColumn) AS BulkColumn
 FROM OPENROWSET(BULK 'C:\Users\ruben\OneDrive\TEC\4 Semestre\Bases de Datos 2\Bases2\Proyecto 2\XML\Cliente.XML', SINGLE_BLOB) AS x)
 
 EXEC sp_xml_preparedocument @hDoc OUTPUT, @XML
-DECLARE @xmlTable Table (Nombre varchar(50), Apellido varchar(50), Correo varchar(50), IDIdioma int, Telefono varchar(50))
-INSERT INTO @xmlTable SELECT Nombre, Apellido, Correo, IDIdioma, Telefono
+DECLARE @xmlTable Table (IDNombre varchar(50), IDApellido int, IDCorreo int, IDIdioma int, IDTelefono int, IDTitulo int)
+INSERT INTO @xmlTable SELECT IDNombre, IDApellido, IDCorreo, IDIdioma, IDTelefono, IDTitulo
 FROM OPENXML(@hDoc, 'dataset/Cliente')
 WITH 
 (
-Nombre [varchar](50) '@Nombre',
-Apellido [varchar](50) '@Apellido',
-Correo [varchar](50) '@Correo',
+IDNombre [int] '@IDNombre',
+IDApellido [int] '@IDApellido',
+IDCorreo [int] '@IDCorreo',
 IDIdioma [int] '@IDIdioma',
-Telefono [varchar](50) '@Telefono'
+IDTelefono [int] '@IDTelefono',
+IDTitulo [int] '@IDTitulo'
 );
 
-DECLARE @Nombre varchar(50), @Apellido varchar(50), @Correo varchar(50), @IDIdioma int, @Telefono varchar(50)
-DECLARE cursorTabla cursor GLOBAL for SELECT Nombre, Apellido, Correo, IDIdioma, Telefono FROM @xmlTable
+DECLARE @IDNombre int, @IDApellido int, @IDCorreo int, @IDIdioma int, @IDTelefono int, @IDTitulo int
+DECLARE cursorTabla cursor GLOBAL for SELECT IDNombre, IDApellido, IDCorreo, IDIdioma, IDTelefono, IDTitulo FROM @xmlTable
 OPEN cursorTabla
-FETCH cursorTabla INTO @Nombre, @Apellido, @Correo, @IDIdioma, @Telefono 
+FETCH cursorTabla INTO @IDNombre, @IDApellido, @IDCorreo, @IDIdioma, @IDTelefono, @IDTitulo
 WHILE(@@fetch_status=0)
 BEGIN
-    IF NOT EXISTS (SELECT * FROM dbo.Cliente WHERE Nombre = @Nombre AND Apellido = @Apellido) 
+    IF NOT EXISTS (SELECT * FROM dbo.Cliente WHERE IDNombre = @IDNombre AND IDApellido = @IDApellido AND IDCorreo = @IDCorreo AND IDTelefono = @IDTelefono AND IDTitulo = @IDTitulo) 
     BEGIN
-        INSERT INTO dbo.Cliente VALUES (@Correo, @Nombre, @Apellido, @IDIdioma, @Telefono)
+        INSERT INTO dbo.Cliente VALUES (@IDCorreo, @IDNombre, @IDApellido, @IDIdioma, @IDTelefono, @IDTitulo)
     END
 	
-    FETCH cursorTabla INTO @Nombre, @Apellido, @Correo, @IDIdioma, @Telefono 
+    FETCH cursorTabla INTO @IDNombre, @IDApellido, @IDCorreo, @IDIdioma, @IDTelefono , @IDTitulo
 END
 CLOSE cursorTabla
 DEALLOCATE cursorTabla

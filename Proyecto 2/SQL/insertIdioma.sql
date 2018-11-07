@@ -22,7 +22,7 @@ OPEN cursorTabla
 FETCH cursorTabla INTO @Nombre
 WHILE(@@fetch_status=0)
 BEGIN
-    IF NOT EXISTS (SELECT * FROM dbo.Idioma WHERE Nombre = @Nombre) 
+    IF NOT EXISTS (SELECT * FROM dbo.Idioma WHERE Idioma = @Nombre) 
     BEGIN
         INSERT INTO dbo.Idioma VALUES (@Nombre)
     END

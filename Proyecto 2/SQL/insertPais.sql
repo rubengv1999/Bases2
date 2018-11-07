@@ -1,6 +1,6 @@
 
 GO
-CREATE PROCEDURE [dbo].[insertColor] 
+CREATE PROCEDURE [dbo].[insertPais] 
 AS 
 BEGIN
 DECLARE @XML AS XML, @hDoc AS INT, @SQL NVARCHAR (MAX)
@@ -22,7 +22,7 @@ OPEN cursorTabla
 FETCH cursorTabla INTO @Nombre
 WHILE(@@fetch_status=0)
 BEGIN
-    IF NOT EXISTS (SELECT * FROM dbo.Pais WHERE Nombre = @Nombre) 
+    IF NOT EXISTS (SELECT * FROM dbo.Pais WHERE Pais = @Nombre) 
     BEGIN
         INSERT INTO dbo.Pais VALUES (@Nombre)
     END

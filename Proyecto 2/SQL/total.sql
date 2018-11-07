@@ -9,8 +9,7 @@ OPEN cursorTabla
 FETCH cursorTabla INTO @IDFactura , @Cantidad
 WHILE(@@fetch_status=0)
 BEGIN
-	SELECT @Precio = M.Precio FROM dbo.Modelo M 
-	INNER JOIN dbo.Carro C on C.IDModelo = M.IDModelo 
+	SELECT @Precio = C.Precio FROM dbo.Carro C
 	INNER JOIN dbo.Factura F  on F.IDCarro = C.IDCarro
 	WHERE F.IDFactura = @IDFactura
 
