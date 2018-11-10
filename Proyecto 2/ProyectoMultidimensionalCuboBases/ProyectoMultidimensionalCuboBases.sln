@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProyectoMultidimensionalCuboBases", "ProyectoMultidimensionalCuboBases\ProyectoMultidimensionalCuboBases.dwproj", "{B7C2AF4B-EC31-4609-A760-9CDC61BFAB8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7C2AF4B-EC31-4609-A760-9CDC61BFAB8C}.Development|Default.ActiveCfg = Development
+		{B7C2AF4B-EC31-4609-A760-9CDC61BFAB8C}.Development|Default.Build.0 = Development
+		{B7C2AF4B-EC31-4609-A760-9CDC61BFAB8C}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B860F817-4964-451F-924A-08F37DE51726}
+	EndGlobalSection
+EndGlobal

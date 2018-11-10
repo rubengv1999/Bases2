@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Integration Services Cubo Bases", "Integration Services Cubo Bases\Integration Services Cubo Bases.dtproj", "{8EE0B8A9-2BCA-4E99-9453-E7472CA24AAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EE0B8A9-2BCA-4E99-9453-E7472CA24AAC}.Development|Default.ActiveCfg = Development
+		{8EE0B8A9-2BCA-4E99-9453-E7472CA24AAC}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FCB6A84-B0A4-4EA7-85DD-08B585AF1C5E}
+	EndGlobalSection
+EndGlobal
